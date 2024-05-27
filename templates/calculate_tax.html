@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Calculate Tax</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.income.label }}<br>
+        {{ form.income() }}<br>
+        {% for error in form.income.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.dependents.label }}<br>
+        {{ form.dependents() }}<br>
+        {% for error in form.dependents.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% if tax_result is not none %}
+    <h3>Your calculated tax: {{ tax_result }} VND</h3>
+{% endif %}
+{% endblock %}

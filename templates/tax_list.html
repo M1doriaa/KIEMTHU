@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Tax Records</h2>
+<ul>
+    {% for record in tax_records %}
+        <li>Income: {{ record.income }} VND, Dependents: {{ record.dependents }}, Tax: {{ record.tax }} VND, Date: {{ record.timestamp }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
